@@ -31,6 +31,24 @@ p {
     font-weight: 300;
     letter-spacing: .05rem;
 }
+
+.cta {
+    display: inline-block;
+    padding: 10px 30px;
+    color: crimson;
+    background-color: transparent;
+    border: 2px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .3s ease;
+    transition-property: color, background-color;
+}
+.cta:hover {
+    color: white;
+    background-color: crimson;
+}
 .section-title{
     font-size: 4rem;
     font-weight: 300;
@@ -107,23 +125,6 @@ p {
 }
 #hero h1:nth-child(3) span{
 animation-delay: 2.5s;
-}
-#hero .cta {
-    display: inline-block;
-    padding: 10px 30px;
-    color: crimson;
-    background-color: transparent;
-    border: 2px solid crimson;
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-    margin-top: 30px;
-    transition: .3s ease;
-    transition-property: color, background-color;
-}
-#hero .cta:hover {
-    color: white;
-    background-color: crimson;
 }
 /*Hero Section ends*/
 
@@ -277,7 +278,89 @@ animation-delay: 2.5s;
 .project-item:hover .project-img img{
     transform: scale(1.1);
 }
-/*Projects section ends here*/
+/*Projects section ends here*/ 
+/*About section*/ 
+.about{
+    flex-direction: column-reverse;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+.col-left{
+    width: 250px;
+    height: 360px;
+}
+.col-right{
+    width: 100%;
+}
+.col-right h2{
+    font-size: 1.7rem ;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    margin-bottom: 10px;
+}
+.col-right p{
+    margin-bottom: 20px;
+}
+.col-right .cta{
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    font-size: 2rem;
+}
+.about-img{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: 10px solid white;
+}
+.about-img::after{
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 19px;
+    height: 98%;
+    width: 98%;
+    border: 7px solid crimson;
+    z-index: -1;
+}
+
+/*End of about section*/ 
+
+/*Contact section starts here*/
+#contact .contact{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.contact-items{
+    width: 100%;
+}
+.contact-item{
+    width: 80%;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 18px #00002c;
+}
+#contact .icon{
+    width: 70px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.contact-info h1{
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/*Contact section ends here*/
+
 
 /*Keyframes*/
 @keyframes text_reveal_box {
