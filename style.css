@@ -6,7 +6,8 @@
 }
 html {
     font-size: 10px;
-    font-family: 'Montserrat', 'sans-serif' ;
+    font-family: 'Montserrat', 'sans-serif';
+    scroll-behavior: smooth;
 }
 a {
     text-decoration: none;
@@ -65,6 +66,7 @@ p {
     letter-spacing: .2rem;
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: 0;
 }
 .section-title span{
     color: crimson;
@@ -81,6 +83,7 @@ p {
 #header .header{
     min-height: 8vh;
     background-color: rgba(31, 30, 30, 0.24);
+    transition: .4s ease background-color;
 }
 #header .nav-bar{
     display: flex;
@@ -97,7 +100,7 @@ p {
     background-color: rgb(31, 30, 30);
     width: 100vw;
     height: 100vh;
-    left: 0;
+    left: 100%;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -105,6 +108,10 @@ p {
     align-items: center;
     z-index: 1;
     overflow-x: hidden;
+    transition: .5s ease left ;
+}
+#header .nav-list ul.active{
+    left: 0;
 }
 #header .nav-list ul a{
     font-size: 2.5rem;
@@ -132,6 +139,63 @@ p {
 #header .nav-list ul li:hover a::after{
     transform: translate(-50%, -50%) scale(1);
     letter-spacing: initial;
+}
+#header .nav-list ul li:hover a{
+    color: crimson;
+}
+#header .hamburger{
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    margin-right: 20px;
+    transform: scale(.8);
+}
+#header .hamburger::after{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid white;
+    animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar{
+    height: 2px;
+    width: 30px;
+    position: relative;
+    background-color: white;
+    z-index: -1;
+}
+#header .hamburger .bar::after, 
+#header .hamburger .bar::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: white;
+    transition: .3s ease;
+    transition-property: top, bottom;
+}
+#header .hamburger .bar::after{
+    top: 8px ;
+}
+#header .hamburger .bar::before{
+    bottom: 8px ;
+}
+#header .hamburger.active .bar::before{
+    bottom: 0;
+}
+#header .hamburger.active .bar::after{
+    top: 0;
 }
 /*Header Section ends*/
 
@@ -411,10 +475,10 @@ animation-delay: 2.5s;
     max-width: 1200px;
     margin: 0 auto;
 }
-.contact-items{
+#contact .contact-items{
     width: 400px;
 }
-.contact-item{
+#contact .contact-item{
     width: 80%;
     padding: 30px;
     text-align: center;
@@ -424,10 +488,10 @@ animation-delay: 2.5s;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0px 0px 18px #00002c;
+    box-shadow: 0px 0px 18px #00002c6c;
     transition: .3s ease box-shadow;
 }
-.contact-item:hover{
+#contact .contact-item:hover{
     box-shadow: 0px 0px 5px 0 #00002c;
 }
 #contact .icon{
@@ -435,7 +499,7 @@ animation-delay: 2.5s;
     margin: 0 auto;
     margin-bottom: 10px;
 }
-.contact-info h1{
+#contact .contact-info h1{
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 5px;
@@ -460,7 +524,7 @@ animation-delay: 2.5s;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.social-icon{
+#footer .social-icon{
     display: flex;
     margin-bottom: 30px;
 }
@@ -486,6 +550,16 @@ animation-delay: 2.5s;
 
 
 /*Keyframes*/
+@keyframes hamburger_puls{
+    0%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
 @keyframes text_reveal_box {
     50%{
         width: 100%;
@@ -610,6 +684,25 @@ animation-delay: 2.5s;
 
 /* Media queries for desktop */
 @media only screen and (min-width:1200px){
+    #header .hamburger{
+        display: none;
+    }
+    #header .nav-list ul{
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+    }
+    #header .nav-list ul li{
+        display: inline-block;
+    }
+    #header .nav-list ul li a{
+        font-size: 1.8rem;
+    }
+    #header .nav-list ul a::after{
+        display: none;
+    }
     #services .service-bottom .service-item{
         flex-basis: 22%;
         margin: 1.5%;
